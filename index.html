@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Feluda Stories — Cinematic Map</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
@@ -131,6 +131,80 @@ body { font-family: 'EB Garamond', Georgia, serif; background: var(--ink); heigh
 
 @keyframes fadeUp { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
 .fade-up { animation: fadeUp 0.4s ease forwards; }
+
+/* ══ MOBILE RESPONSIVE ══ */
+@media (max-width: 768px) {
+  #header { padding: 10px 14px; }
+  .h-title { font-size: 14px; }
+  .h-title em { font-size: 11px; }
+  .h-sub { font-size: 8px; }
+
+  #char-buttons {
+    position: fixed; top: 54px; left: 0; right: 0;
+    flex-direction: row; justify-content: center;
+    transform: none; gap: 6px; padding: 0 10px;
+    z-index: 15; overflow-x: auto;
+  }
+  .char-btn { width: auto; min-width: 70px; padding: 5px 10px; font-size: 11px; white-space: nowrap; }
+  .char-btn-sub { font-size: 8px; }
+
+  #story-legend {
+    bottom: 60px; left: 0; right: 0;
+    flex-direction: row; gap: 6px;
+    padding: 0 10px; overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  #story-legend::-webkit-scrollbar { display: none; }
+  .legend-item { flex-shrink: 0; padding: 6px 10px; border-left-width: 3px; }
+  .legend-name { font-size: 10px; }
+  .legend-count { display: none; }
+
+  #feluda-theme-btn { bottom: 110px; font-size: 11px; padding: 6px 14px; }
+  #hint { bottom: 135px; font-size: 10px; padding: 5px 14px; }
+
+  #popup {
+    top: auto; right: 0; bottom: 0; left: 0;
+    width: 100%; height: 65vh;
+    transform: translateY(30px);
+    align-items: flex-end;
+  }
+  #popup.visible { transform: translateY(0); }
+  #popup-card {
+    width: 100%; margin: 0;
+    border-left: none;
+    border-top: 1px solid rgba(201,168,76,0.3);
+    border-radius: 14px 14px 0 0;
+    max-height: 65vh;
+  }
+  #popup-card::before {
+    content: ''; display: block;
+    width: 36px; height: 4px;
+    background: rgba(201,168,76,0.3);
+    border-radius: 2px; margin: 8px auto 0;
+  }
+  #popup-header { padding: 8px 14px; }
+  .popup-location { font-size: 9px; }
+  .popup-title { font-size: 14px; }
+  #scene-text { font-size: 13px; line-height: 1.8; }
+  #popup-scroll { padding: 10px 14px 12px; }
+  #popup-footer { padding: 7px 14px; }
+
+  #unmute-btn { bottom: auto; top: 108px; right: 12px; font-size: 11px; padding: 5px 12px; }
+
+  #char-modal-card { width: 95vw; max-height: 90vh; }
+  .char-side-layout, .ray-layout { flex-direction: column; }
+  .ray-img-col, .char-img-col { width: 100%; max-height: 160px; padding: 10px; }
+  .ray-img-col img, .char-img-col img { max-height: 140px; width: auto; margin: 0 auto; display: block; }
+  .ray-text-col, .char-text-col { border-left: none; border-top: 0.5px solid rgba(201,168,76,0.12); }
+  .char-text-content { font-size: 13px; }
+
+  .leaflet-bottom.leaflet-right { bottom: 165px; }
+
+  .story-marker { width: 40px; height: 40px; }
+  .marker-pin { width: 24px; height: 24px; top: 5px; left: 5px; }
+  .marker-num { width: 24px; height: 24px; top: 5px; left: 5px; font-size: 9px; }
+}
 
 /* ══ FELUDA THEME BUTTON ══ */
 #feluda-theme-btn {
